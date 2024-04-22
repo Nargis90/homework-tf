@@ -1,3 +1,11 @@
+terraform {
+  backend "s3"{
+    bucket = "nargis-tfstate"
+    key = "dev/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
 resource "aws_s3_bucket" "s3" {
   bucket = "nargis-tfstate"
 

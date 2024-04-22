@@ -30,6 +30,7 @@ resource "aws_subnet" "subnet2" {
   
 data "aws_ami" "ami-oregon" {
   most_recent      = true
+  provider = aws.Oregon
   owners           = ["137112412989"]
 
   filter {
@@ -57,8 +58,7 @@ resource "aws_instance" "inst-private" {
 resource "aws_instance" "inst-oregon" {
   ami           = data.aws_ami.ami-oregon.id
   provider = aws.Oregon
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
   depends_on = [ aws_instance.inst-private ]
-  
-}
+  }
 
